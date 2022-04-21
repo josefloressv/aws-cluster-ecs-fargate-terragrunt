@@ -42,7 +42,15 @@ inputs = {
             protocol    = "tcp"
             cidr_blocks = ["0.0.0.0/0"]
 
-        }]
+        }, {
+            description = "Allow port 3000 for static IP access test"
+            from_port   = 3000
+            to_port     = 3000
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+
+        }
+    ]
 
     sg_alb_tags = {
         Name = "TestingFargateSGALB"
