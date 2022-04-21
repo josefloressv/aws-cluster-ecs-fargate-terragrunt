@@ -1,5 +1,5 @@
 terraform {
-    source = "../aws-cluster-ecs-fargate-terraform//"
+    source = "${get_env("HOME")}/today/aws-cluster-ecs-fargate-terraform//"
 }
 
 remote_state {
@@ -26,9 +26,11 @@ inputs = {
     # VPC
     vpc_name = "TestingFargateVPC"
     vpc_cidr = "192.168.0.0/16"
-    vpc_public_subnets = ["us-east-1a", "us-east-1b", "us-east-1c"]
-    vpc_public_subnets_azs= ["192.168.1.0/24", "192.168.2.0/24", "192.168.3.0/24"]
-    vpc_tags = {}
+    vpc_public_subnets = ["192.168.1.0/24", "192.168.2.0/24"]
+    vpc_public_subnets_azs= ["us-east-1a", "us-east-1b"]
+    vpc_tags = {
+        Name         = "TestingFargateVPC"
+    }
 
     # Security Group
     sg_alb_name = "TestingFargateSGALB"
@@ -49,7 +51,7 @@ inputs = {
 
     # Load Balancer
     alb_name = "TestingFargateALB"
-    alb_subnets = ["us-east-1a", "us-east-1b", "us-east-1c"]
+    alb_subnets = ["us-east-1a", "us-east-1b"]
     alb_tags = {
         Name = "TestingFargateALB"
     }
