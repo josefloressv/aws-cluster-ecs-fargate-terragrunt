@@ -50,6 +50,14 @@ inputs = {
             cidr_blocks = ["0.0.0.0/0"]
 
         }
+, {
+            description = "Allow port 8080 for static IP access test"
+            from_port   = 8080
+            to_port     = 8080
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+
+        }
     ]
 
     sg_alb_tags = {
